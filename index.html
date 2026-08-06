@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Resources</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+:root {
+  --blue:        #0070b9;
+  --blue-dark:   #004e82;
+  --blue-mid:    rgba(0,112,185,0.55);
+  --blue-soft:   rgba(0,112,185,0.12);
+  --blue-ghost:  rgba(0,112,185,0.06);
+  --ink:         #333e4e;
+  --ink-light:   #666;
+  --rule:        #e5e8ec;
+  --white:       #ffffff;
+  --radius:      10px;
+  --transition:  0.22s ease;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrap { width: 100%; padding: 0; }
+
+/* ─── SECTION ──────────────────────────────────────────────────────── */
+.section { padding: 20px 0 92px; }
+.section + .section { border-top: 1.5px solid var(--rule); }
+
+/* ─── SECTION HEADER ───────────────────────────────────────────────── */
+.section-head { margin-bottom: 10px; }
+.section-head.centered { text-align: center; }
+
+.section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 700;
+  color: var(--blue-dark);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.section-head.centered h2 { justify-content: center; }
+
+.head-icon {
+  width: clamp(34px, 4vw, 56px);
+  height: clamp(34px, 4vw, 56px);
+  opacity: 0.20;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transform: rotate(-6deg);
+}
+.head-icon path, .head-icon rect, .head-icon circle, .head-icon line, .head-icon polygon {
+  stroke: var(--blue);
+}
+
+.section-sub {
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.65;
+  margin-top: 6px;
+  font-style: italic;
+  max-width: 760px;
+}
+.section-head.centered .section-sub { margin-left: auto; margin-right: auto; }
+
+/* ─── DIVIDER ──────────────────────────────────────────────────────── */
+.divider {
+  height: 2px;
+  width: 72%;
+  margin: 20px 0 38px 0;
+  background: linear-gradient(to right, rgba(0,112,185,0.9), rgba(0,112,185,0.08));
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(0,112,185,0.14);
+}
+.divider.centered {
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(to right, rgba(0,112,185,0.1), rgba(0,112,185,0.9), rgba(0,112,185,0.1));
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FEATURE CTA CARDS  (Marketing Request Form / Business Card Orders)
+   — matches the Garrett Gazette / Garrett Gear containers
+═══════════════════════════════════════════════════════════════════ */
+.cta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 2vw, 26px);
+}
+.cta-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(26px, 3vw, 42px);
+  border-radius: 16px;
+  border: 1.5px solid rgba(0,112,185,0.16);
+  background: #f3f2f2;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  min-height: 210px;
+}
+.cta-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 100% at 100% 0%, rgba(0,112,185,0.12), transparent 55%);
+  opacity: 0; transition: opacity var(--transition);
+}
+.cta-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0,112,185,0.34);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.10), 0 4px 14px rgba(0,112,185,0.14);
+}
+.cta-card:hover::before { opacity: 1; }
+.cta-icon {
+  position: relative;
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  background: var(--blue-soft);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  transition: background var(--transition);
+}
+.cta-card:hover .cta-icon { background: var(--blue); }
+.cta-icon svg { width: 50%; height: 50%; }
+.cta-icon svg path, .cta-icon svg rect, .cta-icon svg circle, .cta-icon svg line { stroke: var(--blue); }
+.cta-card:hover .cta-icon svg path,
+.cta-card:hover .cta-icon svg rect,
+.cta-card:hover .cta-icon svg circle,
+.cta-card:hover .cta-icon svg line { stroke: #fff; }
+.cta-kicker {
+  position: relative;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-light); margin-bottom: 6px;
+}
+.cta-title {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700; color: var(--blue-dark); line-height: 1.15; margin-bottom: 8px;
+}
+.cta-desc {
+  position: relative;
+  font-size: clamp(11px, 1vw, 13.5px); font-weight: 300; color: var(--ink-light);
+  line-height: 1.6; max-width: 380px;
+}
+.cta-action {
+  position: relative;
+  margin-top: auto; padding-top: 20px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: clamp(11px, 1vw, 13px); font-weight: 600; letter-spacing: 0.04em;
+  color: var(--blue);
+}
+.cta-action svg { width: 12px; height: 12px; transition: transform var(--transition); }
+.cta-card:hover .cta-action svg { transform: translateX(4px); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   TEAM  (Meet the Marketing Team) — matches Office Managers exactly
+═══════════════════════════════════════════════════════════════════ */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(14px, 2vw, 24px);
+}
+.team-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,112,185,0.13);
+  background-color: #f3f2f2;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  min-height: clamp(130px, 14vw, 190px);
+}
+.team-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.09), 0 4px 14px rgba(0,112,185,0.12);
+  border-color: rgba(0,112,185,0.30);
+}
+.team-photo-col {
+  flex-shrink: 0;
+  width: clamp(90px, 11vw, 150px);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #c8dff2 0%, #ddeef8 100%);
+}
+.team-photo-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.team-card:hover .team-photo-col img { transform: scale(1.04); }
+.team-photo-col::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--blue), rgba(0,112,185,0.2));
+  z-index: 2;
+}
+.avatar-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #dde8f4 0%, #eaf2fb 100%);
+}
+.avatar-placeholder svg { width: 46%; height: 46%; opacity: 0.30; }
+.team-info-col {
+  flex: 1;
+  padding: clamp(16px, 1.8vw, 26px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.team-name {
+  font-size: clamp(13px, 1.25vw, 16px);
+  font-weight: 600;
+  color: var(--blue);
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.team-rule {
+  width: 28px; height: 1.5px;
+  background: var(--blue); opacity: 0.30;
+  border-radius: 2px; margin-bottom: 7px; flex-shrink: 0;
+}
+.team-title {
+  font-size: clamp(10px, 0.9vw, 12.5px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.5;
+  opacity: 0.80;
+  margin-bottom: clamp(10px, 1.4vw, 18px);
+}
+.contact-link {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(9px, 0.78vw, 11px);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color var(--transition);
+  width: fit-content;
+}
+.contact-link:hover { color: var(--blue); }
+.contact-link svg { width: 11px; height: 11px; opacity: 0.50; transition: opacity var(--transition); }
+.contact-link:hover svg { opacity: 1; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   BUTTON GRID  (Looking for Marketing Materials)
+   — matches Submitting an Expense Report
+═══════════════════════════════════════════════════════════════════ */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(8px, 1.2vw, 16px);
+}
+.link-btn {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 0.9vw, 12px);
+  width: 100%;
+  padding: clamp(12px, 1.3vw, 18px) clamp(12px, 1.5vw, 20px);
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  background: var(--blue);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,112,185,0.2);
+  transition: transform var(--transition), border-color var(--transition),
+              box-shadow var(--transition), background var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.link-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.link-btn:hover::before { opacity: 1; }
+.link-btn:hover {
+  transform: translateY(-3px);
+  background: var(--blue-dark);
+  border-color: transparent;
+  color: var(--white);
+  box-shadow: 0 8px 24px rgba(0,112,185,0.3);
+}
+.link-icon {
+  flex-shrink: 0;
+  width: clamp(33px, 1.9vw, 26px);
+  height: clamp(33px, 1.9vw, 26px);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.link-icon svg { width: 100%; height: 100%; opacity: 0.85; transition: opacity var(--transition); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
+.link-icon svg path, .link-icon svg rect, .link-icon svg circle, .link-icon svg line { stroke: var(--white); }
+.link-btn:hover .link-icon svg { opacity: 1; }
+.link-btn:hover .link-icon svg path,
+.link-btn:hover .link-icon svg rect,
+.link-btn:hover .link-icon svg circle,
+.link-btn:hover .link-icon svg line { stroke: var(--white); }
+.link-label { position: relative; z-index: 1; line-height: 1.35; }
+
+/* ── Custom icon images in the marketing-materials buttons ── */
+.link-icon img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  opacity: 0.88;
+  transition: opacity var(--transition);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+.link-btn:hover .link-icon img { opacity: 1; }
+
+/* Add class="white" to any dark/colored icon to force it to render white */
+.link-icon img.white {
+  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PORTFOLIO LOGO GRID  (Explore Our Portfolio)
+   — matches Pursuing Excellence Together (hover + logo rules replicated)
+═══════════════════════════════════════════════════════════════════ */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(12px, 1.6vw, 20px);
+}
+.logo-tile {
+  position: relative;       /* anchor for the hover image layer */
+  overflow: hidden;         /* clips the image to the rounded corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  padding: clamp(16px, 2vw, 28px);
+  border-radius: 12px;
+  border: 1.5px solid rgba(0,112,185,0.12);
+  background: var(--white);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+/* per-property hover background image (set --hover-bg on each tile) */
+.logo-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--hover-bg);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+  z-index: 0;
+}
+.logo-tile:hover::before { opacity: 1; }
+.logo-tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,112,185,0.30);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.09), 0 3px 12px rgba(0,112,185,0.12);
+}
+.logo-tile img {
+  position: relative;       /* keep logo above the hover image */
+  z-index: 1;
+  max-width: 125%;
+  max-height: 125%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.62;
+  transition: filter var(--transition), opacity var(--transition), transform 0.35s ease;
+}
+.logo-tile:hover img { filter: grayscale(0%); opacity: 1; transform: scale(1.04); }
+/* Text fallback shown when a logo image is missing */
+.logo-fallback {
+  position: relative;       /* keep fallback above the hover image */
+  z-index: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(14px, 1.5vw, 20px);
+  font-weight: 600;
+  color: var(--blue-dark);
+  letter-spacing: 0.01em;
+  text-align: center;
+  opacity: 0.75;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   QUICK ACTION CARDS  (Locker Room / Branded Property Names)
+   — matches Tech Issues / Garrett Gear cards, 2-up instead of 3
+═══════════════════════════════════════════════════════════════════ */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2vw, 26px);
+}
+.quick-grid.two-up { grid-template-columns: repeat(2, 1fr); }
+
+.quick-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: clamp(22px, 2.4vw, 34px) clamp(20px, 2.2vw, 32px) clamp(20px, 2.2vw, 30px);
+  background-color: #f3f2f2;
+  background-size: cover;
+  background-position: center;
+  border: 1.5px solid rgba(0,112,185,0.15);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  overflow: hidden;
+}
+.quick-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--blue), rgba(0,112,185,0.25));
+}
+.quick-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,112,185,0.32);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.10), 0 4px 14px rgba(0,112,185,0.14);
+}
+.quick-icon {
+  width: clamp(38px, 4vw, 52px);
+  height: clamp(38px, 4vw, 52px);
+  border-radius: 12px;
+  background: var(--blue-soft);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 6px;
+  transition: background var(--transition);
+}
+.quick-card:hover .quick-icon { background: var(--blue); }
+.quick-icon svg { width: 52%; height: 52%; }
+.quick-icon svg path, .quick-icon svg rect, .quick-icon svg circle, .quick-icon svg line { stroke: var(--blue); }
+.quick-card:hover .quick-icon svg path,
+.quick-card:hover .quick-icon svg rect,
+.quick-card:hover .quick-icon svg circle,
+.quick-card:hover .quick-icon svg line { stroke: #fff; }
+.quick-label {
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-weight: 600;
+  color: var(--blue);
+  line-height: 1.2;
+}
+.quick-sub {
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.55;
+  margin-bottom: clamp(14px, 1.6vw, 20px);
+}
+.quick-btn {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #fff;
+  text-decoration: none;
+  background: var(--blue);
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0,112,185,0.28);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.quick-btn:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0,112,185,0.34);
+}
+.quick-btn svg { width: 11px; height: 11px; transition: transform var(--transition); }
+.quick-btn:hover svg { transform: translateX(3px); }
+
+/* Spacing when the quick cards sit directly under the button grid */
+.materials-cards { margin-top: clamp(18px, 2.4vw, 30px); }
+
+/* ─── RESPONSIVE ───────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .cta-grid        { grid-template-columns: 1fr; }
+  .team-grid       { grid-template-columns: 1fr; }
+  .links-grid      { grid-template-columns: repeat(2, 1fr); }
+  .logo-grid       { grid-template-columns: repeat(3, 1fr); }
+  .quick-grid,
+  .quick-grid.two-up { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .logo-grid       { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .links-grid      { grid-template-columns: 1fr; }
+}
+
+/* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
+.js-reveal .section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js-reveal .section.in-view { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .section { opacity: 1 !important; transform: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- ═══════════════════════════════════════════════════
+     TOP CTAs — Marketing Request Form / Business Card Orders
+════════════════════════════════════════════════════ -->
+<div class="section" id="marketing-cta">
+  <div class="cta-grid">
+
+    <!-- MARKETING REQUEST FORM -->
+    <a class="cta-card" href="https://forms.monday.com/forms/3b9d8db68864ebcbccdcbaedb067cd7c?r=use1" target="_blank" rel="noopener">
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke-width="1.7" stroke-linejoin="round"/><rect x="9" y="3" width="6" height="4" rx="1" stroke-width="1.7"/><path d="M8.5 12.5l2 2 4-4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="cta-kicker">Start a Project</div>
+      <div class="cta-title">Marketing Request Form</div>
+      <p class="cta-desc">Need a flyer, campaign, signage, or something custom? Submit your request and our marketing team will take it from there.</p>
+      <span class="cta-action">Submit a Request
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+    <!-- BUSINESS CARD ORDERS -->
+    <a class="cta-card" href="https://forms.office.com/Pages/ResponsePage.aspx?id=SZWReFIwbU-9jeoN4Rc4Gl2BdSCQaWFMnXZWMDibKB1UMkZPSlFSQkg3S05FUkkxS0hRVk5MVTRWNS4u" target="_blank" rel="noopener">
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="2" stroke-width="1.7"/><circle cx="8" cy="11" r="2" stroke-width="1.7"/><path d="M5.5 16a2.6 2.6 0 0 1 5 0M14 10h4M14 13h4M14 16h2.5" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </div>
+      <div class="cta-kicker">Print &amp; Supplies</div>
+      <div class="cta-title">Business Card Orders</div>
+      <p class="cta-desc">Order professional business cards for yourself or your team — new hires, reprints, and updated titles, all in one place.</p>
+      <span class="cta-action">Order Business Cards
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MEET THE MARKETING TEAM  (8 members — 4 rows of 2)
+════════════════════════════════════════════════════ -->
+<div class="section" id="marketing-team">
+  <div class="section-head">
+    <h2>
+      Meet the Marketing Team
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3.2" stroke-width="1.6"/><circle cx="17" cy="9" r="2.6" stroke-width="1.6"/><path d="M3 19c0-3.3 2.7-6 6-6s6 2.7 6 6M15 13c2.8 0 6 1.8 6 6" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </h2>
+    <p class="section-sub">From campaigns and collateral to branding, photography, and events, the marketing team helps bring every Garrett community to life. Reach out to the right person below for whatever you need!</p>
+  </div>
+  <div class="divider"></div>
+
+  <!-- ▼ For each member, replace the name, title, mailto, and photo src. Leave src="" and the name will show as a placeholder until a photo is added. ▼ -->
+  <div class="team-grid">
+
+    <!-- MEMBER 1 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_0261dbf8e82340bb93dce304cf876738~mv2.png" alt="Sara Lindsay">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Sara Lindsay</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Vice President of Marketing</div>
+        <a class="contact-link" href="mailto:slindsey@thegarrettco.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 2 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_021c9eb9558346ac9f3309ba8a42de05~mv2.png" alt="Jamie Dunlap">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Jamie Dunlap</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Senior Director of Marketing</div>
+        <a class="contact-link" href="mailto:jdunlap@thegarrettco.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 3 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_0d41bba5270143b18194a15f3bc4b898~mv2.png" alt="Ashley Edlund">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Ashley Edlund</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Senior Creative & Brand Manager</div>
+        <a class="contact-link" href="mailto:aedlund@thegarrettco.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 4 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_ceccf08398864e2089e95439f975bf3f~mv2.png" alt="Bailey Shives">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Bailey Shives</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Senior Digital Marketing Manager</div>
+        <a class="contact-link" href="mailto:bshives@thegarrettco.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 5 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_a06b2ac80f2343e28e9dcd6167ed8b49~mv2.png" alt="Janine Garner">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Janine Garner</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Communications Manager</div>
+        <a class="contact-link" href="mailto:JGarner@TheGarrettCo.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 6 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_a5ba8262f60f400281b32475602b7087~mv2.png" alt="Kelly Dickey">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Kelly Dickey</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Residential Marketing Manager</div>
+        <a class="contact-link" href="mailto:KDickey@TheGarrettCo.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 7 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_821ddcdd618e4ec49368bf8029ddcd5a~mv2.png" alt="Elizabeth Boas">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Elizabeth Boas</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Graphic Designer</div>
+        <a class="contact-link" href="mailto:eboas@thegarrettco.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- MEMBER 8 -->
+    <div class="team-card">
+      <div class="team-photo-col">
+        <img src="https://static.wixstatic.com/media/4f7dd4_009f4e15552d48ff9d2d414454362075~mv2.png" alt="Kaitlin Womack">
+      </div>
+      <div class="team-info-col">
+        <div class="team-name">Kaitlin Womack</div>
+        <div class="team-rule"></div>
+        <div class="team-title">Graphic Designer</div>
+        <a class="contact-link" href="mailto:kwomack@thegarrettco.com">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     LOOKING FOR MARKETING MATERIALS?
+     (12 buttons + Locker Room / Branded Property Names cards)
+════════════════════════════════════════════════════ -->
+<div class="section" id="marketing-materials">
+  <div class="section-head">
+    <h2>
+      Looking for Marketing Materials?
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="7" height="7" rx="1.5" stroke-width="1.6"/><rect x="14" y="4" width="7" height="7" rx="1.5" stroke-width="1.6"/><rect x="3" y="13" width="7" height="7" rx="1.5" stroke-width="1.6"/><rect x="14" y="13" width="7" height="7" rx="1.5" stroke-width="1.6"/></svg>
+    </h2>
+    <p class="section-sub">Brand assets, templates, and everything you need to represent Garrett consistently — all in one place.</p>
+  </div>
+  <div class="divider"></div>
+
+  <!-- ▼ Paste your icon URL into src="" on each button. Leave it blank to use the fallback icon.
+         Add class="white" if the icon is dark/colored and needs to render white on the blue button. ▼ -->
+  <div class="links-grid">
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EpOAwFSbhppEvo61zhXOXvsBp8_69S3JD_rsQGvJS75FjA?e=VCrgdx" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_3e98fe53d2114a969fa0deb28312d53c~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">TGC Corporate</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EvG4zPk8zoJGtJPMslN0gPcBM7imCWg-xoa30i3aWFWsFw?e=CX1ORf" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_3e98fe53d2114a969fa0deb28312d53c~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Garrett Construction</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EkQzo-AghdRAgwGzXy0nmo8B3GdrhK2LgfHTC4xIv0eB9w?e=7C9BUh" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_3d212907b9564ec5a1541cac0520f80a~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Garrett Family Foundation</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/Eu6mhJcZKI9Dla3-szFaqbQB7e0IWTlS9LOuTJWQyKP8DQ?e=h3VDkg" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_952fab582fd04e3bac3fad75fa749fc2~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Garrett Internship Program</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EvB2kuHXiepFiKXHmGZGs7sBKxGk_5EDr2nGyZfq0AJBAQ?e=cQSkAv" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_3e98fe53d2114a969fa0deb28312d53c~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Garrett Residential</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/Eva2M2eAnfFNqUfB2jv3ASEBWvvpVUFEQ7FuJjuQmWvEcg?e=vP6beN" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_c94b7c8448db4742856c06e7d0b00a37~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Apex Lumber &amp; Materials</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EiJCB6j_79lFvpkWDwp3n3MBrCko4Gm0IooiBUqNubyiwg?e=3vyeZ5" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_ca39d916e21e4a97a539247d681a9655~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Blue Horseshoe Framing</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EoNO8eCHZOlPrnB2MeS7IjMB7ShCU4DScrn8CDiKOm4rpQ?e=QNeddh" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_9017df3fa80c4f5990562c43cc2e859e~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Blue Star Mechanical</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EsSz2eaW0QZJlkvkPsl7cQIB1efBfqRQIooJdugOn-Vexg?e=oOK8GL" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_fb5fc4a837be42bcb23173f7e0323533~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">EDGE Multifamily Design</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EvXzEwgJWyNEnqone6ESCYAB84N2vov_krNJXPYhOt4beA?e=RwzgNL" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_82bc9f5a735a4033b1fcc30aaf996ad1~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Legacy Development Partners</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EuGXtaTUwbdLmlZYGlWpGRYBbQHiuAGlaMMUstd238vGGw?e=eQ5bBm" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_c9367ff7c9ca4254afab650b0e895a03~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Teldar Drywall &amp; Paint</span>
+    </a>
+
+    <a class="link-btn" href="https://thegarrettco2.sharepoint.com/:f:/s/SharepointResources/EgCNX4zpROpNqclIL7c0AEEBiF0YKDSB2-RzfPWYT59JyA?e=Zh7mQE" target="_blank" rel="noopener">
+      <span class="link-icon">
+        <img src="https://static.wixstatic.com/media/4f7dd4_3bb2e41de9424a61a3fd5a84c4eda664~mv2.png" alt="" class="white" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="link-label">Telis Group</span>
+    </a>
+
+  </div>
+
+<br>
+  <!-- QUICK CARDS — Locker Room / Branded Property Names (directly under the buttons, no divider) -->
+  <div class="quick-grid two-up materials-cards">
+
+    <!-- THE LOCKER ROOM -->
+    <div class="quick-card">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3l4 2 4-2 4 3-3 3v10a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V9L4 6l4-3z" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="quick-label">The Locker Room</div>
+      <p class="quick-sub">Your team store for branded apparel, gear, and essentials — gear up and represent Garrett.</p>
+      <a class="quick-btn" href="https://garrettcomarketplace.com/" target="_blank" rel="noopener">
+        Shop the Locker Room
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- BRANDED PROPERTY NAMES -->
+    <div class="quick-card">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0l-7-7A2 2 0 0 1 3 12.2V5a2 2 0 0 1 2-2h7.2a2 2 0 0 1 1.4.6l7 7a2 2 0 0 1 0 2.8z" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="1.5" stroke-width="1.8"/></svg>
+      </div>
+      <div class="quick-label">Branded Property Names</div>
+      <p class="quick-sub">Communities often carry a different name during construction. Reference the official, branded community names here.</p>
+      <a class="quick-btn" href="https://thegarrettco2-my.sharepoint.com/:x:/g/personal/jdunlap_thegarrettco_com/EeFjL1wp_lJHiRIhRdeIjqUBPzTrtXowvcag2aeVu4zaDA?e=50kKuf" target="_blank" rel="noopener">
+        View Property Names
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     EXPLORE OUR PORTFOLIO  (properties — logo grid)
+════════════════════════════════════════════════════ -->
+<div class="section" id="portfolio">
+  <div class="section-head centered">
+    <h2>
+      Explore Our Portfolio
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v16M13 21V9h5a1 1 0 0 1 1 1v11M8 8h2M8 12h2M8 16h2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </h2>
+    <p class="section-sub">A look at the communities we bring to market. Explore the properties across the Garrett portfolio.</p>
+  </div>
+  <div class="divider centered"></div>
+
+  <!-- ▼ For each property: paste the logo into src="", the brand background into --hover-bg, and the property website into href. The name below shows until a logo loads, then hides automatically. ▼ -->
+  <div class="logo-grid">
+    <a class="logo-tile" href="https://www.liveatagaveranch.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_7f9f635e92ec4510ba0b31b13593261f~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_17ffad4b367a4a5ea5268972535af7f8~mv2.png" alt="Agave Ranch" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Agave Ranch</span></a>
+    <a class="logo-tile" href="https://www.lifeatara.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_13b2b77e02624189b6a9e218abd9c91d~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_86b9f0f8a8a2424987dbb23f293dca0e~mv2.png" alt="Ara Townhomes &amp; Flats" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Ara Townhomes &amp; Flats</span></a>
+    <a class="logo-tile" href="https://www.ebbtideliving.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_7f2cdc744f604cb992582d3a425e4d7c~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_f518bc26b49a469fac372936346f9ce6~mv2.png" alt="Ebbtide" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Ebbtide</span></a>
+    <a class="logo-tile" href="https://www.garrettbaseline.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_8633d068d2df46ada1e151ab52d9fa3b~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_ba8c164c21394bc9864f40a1d7ffa2d5~mv2.png" alt="Garrett Baseline" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Baseline</span></a>
+    <a class="logo-tile" href="https://www.garrettfillmore.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_ae30ec84a88649ba9522b21c2342b172~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_6cac15ed95e94f8199839274d65ae39a~mv2.png" alt="Garrett Fillmore" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Fillmore</span></a>
+    <a class="logo-tile" href="https://www.garrettforum.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_68608488eddc4f37bfca7e283f2f3840~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_6cfd00e5bea84ee58983747d4c3c68f6~mv2.png" alt="Garrett Forum" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Forum</span></a>
+    <a class="logo-tile" href="https://www.garrettgateway.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_fc49e83f30b24844839da9c7dca3aa74~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_7aa400aa0ecb4d78ae4ff7e5004d823a~mv2.png" alt="Garrett Gateway" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Gateway</span></a>
+    <a class="logo-tile" href="https://www.garrettharvestjunctionwest.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_be09824dc7804a9d9ae6b434551c71b4~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_a93d33557ff5488dac2421e6dc14944d~mv2.png" alt="Garrett Harvest Junction West" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Harvest Junction West</span></a>
+    <a class="logo-tile" href="https://www.garrettmesa.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_8ccb558c46544f1f8f09f3448a06e6c1~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_70b8843471fe480f9ba87acafebde8ad~mv2.png" alt="Garrett Mesa" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Mesa</span></a>
+    <a class="logo-tile" href="https://www.garrettturkeycreek.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_f93d4d00d1f740d999d89694006ec6fb~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_5e8a4948da8e4dc6a09d89f5301b2096~mv2.png" alt="Garrett Turkey Creek" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Turkey Creek</span></a>
+    <a class="logo-tile" href="https://www.garrettuptownapts.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_070d7720c8fe4ec5870400cb81c2c19b~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_2f1e67b268484f5f9098ca9aee7a0aeb~mv2.png" alt="Garrett Uptown" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Uptown</span></a>
+    <a class="logo-tile" href="https://www.jasperatvictoryridge.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_e8d3092a5b7f4a4a9c8fea6056e5d333~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_bb3b6c3f6353415bae25ed6a79fa6767~mv2.png" alt="Jasper at Victory Ridge" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Jasper at Victory Ridge</span></a>
+    <a class="logo-tile" href="https://www.liveatthelennox.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_73fd61f953bb41088dd76fe5ab95aab9~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_48b6bedc94da4b1889ffc2f9f0d4dc16~mv2.png" alt="Lennox at Copperleaf" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Lennox at Copperleaf</span></a>
+    <a class="logo-tile" href="https://www.liftatjordancreek.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_73fd61f953bb41088dd76fe5ab95aab9~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_b833c6de27a746728d8cef0584be846c~mv2.png" alt="Lift at Jordan Creek" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Lift at Jordan Creek</span></a>
+    <a class="logo-tile" href="https://www.liveatmaeva.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_422db80a41bd41d0a9460215726b25e2~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_3fcc7111d5d345f3bc2dbf3d362ad09b~mv2.png" alt="Maeva" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Maeva</span></a>
+    <a class="logo-tile" href="https://www.liveatmaverickapts.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_464d91246e3c4752a52cee09e210fadc~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_351607aa60274adab7feb3817bec86a6~mv2.png" alt="Maverick" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Maverick</span></a>
+    <a class="logo-tile" href="https://www.liveatrewind.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_256e5767b73c40d78320784294fb7dbf~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_c65f85c69473400e85b71051b1df07ea~mv2.png" alt="Rewind at Crest" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Rewind at Crest</span></a>
+    <a class="logo-tile" href="https://www.liveatstonemesa.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_94e6b4c3703a4d94bc37ca3fbe641d9e~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_7e49e8b6fc4e462792526c4dd1db1249~mv2.png" alt="Stone Mesa" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Stone Mesa</span></a>
+    <a class="logo-tile" href="https://www.liveattheartifact.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_785d898af86e49409930ef2bfdf05a13~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_9394dfadaa4c485ebd4f8d5c69133f1d~mv2.png" alt="The Artifact" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Artifact</span></a>
+    <a class="logo-tile" href="https://www.thebaldwinliving.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_6d932bfd572146a988551c50bb2dd373~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_83676e89086e46bf800bd5d3348f06bb~mv2.png" alt="The Baldwin" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Baldwin</span></a>
+    <a class="logo-tile" href="https://www.thecitizenonconstitution.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_a670cdc5ea1f42efbbbba375227cf97b~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_c555b764cc1c43beb3b70355b8f22894~mv2.png" alt="The Citizen on Constitution" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Citizen on Constitution</span></a>
+    <a class="logo-tile" href="https://www.liveatthegallery.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_1ae0525c17e84a5e99160ba9319ca500~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_54404c075b80449ca9e88fdf189b685e~mv2.png" alt="The Gallery" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Gallery</span></a>
+    <a class="logo-tile" href="https://www.liveatthenash.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_ec0fdec46ce3448dace936f575ecb981~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_f071fb28282c4c25b1384f4a450a8223~mv2.png" alt="The Nash" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Nash</span></a>
+    <a class="logo-tile" href="https://www.pendantapts.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_6a18a0e1e21348edb722aa252b159cca~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_43bddced91b8465a89e0d7ca8a06ca05~mv2.png" alt="The Pendant Southlands" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Pendant Southlands</span></a>
+  </div>
+</div>
+
+</div><!-- /page-wrap -->
+
+<script>
+/* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+  document.body.classList.add('js-reveal');
+  var sections = document.querySelectorAll('.section');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(function(s) { io.observe(s); });
+})();
+</script>
+</body>
+</html>
