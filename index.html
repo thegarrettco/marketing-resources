@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marketing Resources</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* ─── RESET & BASE ─────────────────────────────────────────────────── */
@@ -25,10 +25,14 @@ html { scroll-behavior: smooth; }
   --white:       #ffffff;
   --radius:      10px;
   --transition:  0.22s ease;
+
+  /* ▼ ONE PLACE TO CHANGE ALL TYPE ▼ */
+  --font-head:   'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:   'Poppins', 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
@@ -45,15 +49,15 @@ body {
 .section-head.centered { text-align: center; }
 
 .section-head h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3.2vw, 40px);
+  font-family: var(--font-head);
+  font-size: clamp(25px, 3vw, 38px);
   font-weight: 700;
   color: var(--blue-dark);
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
 }
 .section-head.centered h2 { justify-content: center; }
 
@@ -154,9 +158,9 @@ body {
 }
 .cta-title {
   position: relative;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 2.2vw, 28px);
-  font-weight: 700; color: var(--blue-dark); line-height: 1.15; margin-bottom: 8px;
+  font-family: var(--font-head);
+  font-size: clamp(19px, 2.1vw, 27px);
+  font-weight: 700; color: var(--blue-dark); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 8px;
 }
 .cta-desc {
   position: relative;
@@ -259,7 +263,7 @@ body {
   margin-bottom: clamp(10px, 1.4vw, 18px);
 }
 .contact-link {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(9px, 0.78vw, 11px);
   font-weight: 600;
   letter-spacing: 0.07em;
@@ -291,7 +295,7 @@ body {
   gap: clamp(8px, 0.9vw, 12px);
   width: 100%;
   padding: clamp(12px, 1.3vw, 18px) clamp(12px, 1.5vw, 20px);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(11px, 1.05vw, 14px);
   font-weight: 500;
   color: var(--white);
@@ -353,71 +357,6 @@ body {
 /* Add class="white" to any dark/colored icon to force it to render white */
 .link-icon img.white {
   filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   PORTFOLIO LOGO GRID  (Explore Our Portfolio)
-   — matches Pursuing Excellence Together (hover + logo rules replicated)
-═══════════════════════════════════════════════════════════════════ */
-.logo-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: clamp(12px, 1.6vw, 20px);
-}
-.logo-tile {
-  position: relative;       /* anchor for the hover image layer */
-  overflow: hidden;         /* clips the image to the rounded corners */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 16 / 9;
-  padding: clamp(16px, 2vw, 28px);
-  border-radius: 12px;
-  border: 1.5px solid rgba(0,112,185,0.12);
-  background: var(--white);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-}
-/* per-property hover background image (set --hover-bg on each tile) */
-.logo-tile::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: var(--hover-bg);
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity var(--transition);
-  z-index: 0;
-}
-.logo-tile:hover::before { opacity: 1; }
-.logo-tile:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0,112,185,0.30);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.09), 0 3px 12px rgba(0,112,185,0.12);
-}
-.logo-tile img {
-  position: relative;       /* keep logo above the hover image */
-  z-index: 1;
-  max-width: 125%;
-  max-height: 125%;
-  object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.62;
-  transition: filter var(--transition), opacity var(--transition), transform 0.35s ease;
-}
-.logo-tile:hover img { filter: grayscale(0%); opacity: 1; transform: scale(1.04); }
-/* Text fallback shown when a logo image is missing */
-.logo-fallback {
-  position: relative;       /* keep fallback above the hover image */
-  z-index: 1;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(14px, 1.5vw, 20px);
-  font-weight: 600;
-  color: var(--blue-dark);
-  letter-spacing: 0.01em;
-  text-align: center;
-  opacity: 0.75;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -493,7 +432,7 @@ body {
   align-items: center;
   gap: 8px;
   padding: 11px 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(11px, 1vw, 13px);
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -520,12 +459,8 @@ body {
   .cta-grid        { grid-template-columns: 1fr; }
   .team-grid       { grid-template-columns: 1fr; }
   .links-grid      { grid-template-columns: repeat(2, 1fr); }
-  .logo-grid       { grid-template-columns: repeat(3, 1fr); }
   .quick-grid,
   .quick-grid.two-up { grid-template-columns: 1fr; }
-}
-@media (max-width: 560px) {
-  .logo-grid       { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 520px) {
   .links-grid      { grid-template-columns: 1fr; }
@@ -634,7 +569,7 @@ body {
       <div class="team-info-col">
         <div class="team-name">Ashley Edlund</div>
         <div class="team-rule"></div>
-        <div class="team-title">Senior Creative & Brand Manager</div>
+        <div class="team-title">Senior Creative &amp; Brand Manager</div>
         <a class="contact-link" href="mailto:aedlund@thegarrettco.com">
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           Contact Me
@@ -872,49 +807,6 @@ body {
       </a>
     </div>
 
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     EXPLORE OUR PORTFOLIO  (properties — logo grid)
-════════════════════════════════════════════════════ -->
-<div class="section" id="portfolio">
-  <div class="section-head centered">
-    <h2>
-      Explore Our Portfolio
-      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v16M13 21V9h5a1 1 0 0 1 1 1v11M8 8h2M8 12h2M8 16h2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </h2>
-    <p class="section-sub">A look at the communities we bring to market. Explore the properties across the Garrett portfolio.</p>
-  </div>
-  <div class="divider centered"></div>
-
-  <!-- ▼ For each property: paste the logo into src="", the brand background into --hover-bg, and the property website into href. The name below shows until a logo loads, then hides automatically. ▼ -->
-  <div class="logo-grid">
-    <a class="logo-tile" href="https://www.liveatagaveranch.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_7f9f635e92ec4510ba0b31b13593261f~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_17ffad4b367a4a5ea5268972535af7f8~mv2.png" alt="Agave Ranch" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Agave Ranch</span></a>
-    <a class="logo-tile" href="https://www.lifeatara.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_13b2b77e02624189b6a9e218abd9c91d~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_86b9f0f8a8a2424987dbb23f293dca0e~mv2.png" alt="Ara Townhomes &amp; Flats" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Ara Townhomes &amp; Flats</span></a>
-    <a class="logo-tile" href="https://www.ebbtideliving.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_7f2cdc744f604cb992582d3a425e4d7c~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_f518bc26b49a469fac372936346f9ce6~mv2.png" alt="Ebbtide" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Ebbtide</span></a>
-    <a class="logo-tile" href="https://www.garrettbaseline.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_8633d068d2df46ada1e151ab52d9fa3b~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_ba8c164c21394bc9864f40a1d7ffa2d5~mv2.png" alt="Garrett Baseline" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Baseline</span></a>
-    <a class="logo-tile" href="https://www.garrettfillmore.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_ae30ec84a88649ba9522b21c2342b172~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_6cac15ed95e94f8199839274d65ae39a~mv2.png" alt="Garrett Fillmore" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Fillmore</span></a>
-    <a class="logo-tile" href="https://www.garrettforum.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_68608488eddc4f37bfca7e283f2f3840~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_6cfd00e5bea84ee58983747d4c3c68f6~mv2.png" alt="Garrett Forum" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Forum</span></a>
-    <a class="logo-tile" href="https://www.garrettgateway.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_fc49e83f30b24844839da9c7dca3aa74~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_7aa400aa0ecb4d78ae4ff7e5004d823a~mv2.png" alt="Garrett Gateway" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Gateway</span></a>
-    <a class="logo-tile" href="https://www.garrettharvestjunctionwest.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_be09824dc7804a9d9ae6b434551c71b4~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_a93d33557ff5488dac2421e6dc14944d~mv2.png" alt="Garrett Harvest Junction West" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Harvest Junction West</span></a>
-    <a class="logo-tile" href="https://www.garrettmesa.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_8ccb558c46544f1f8f09f3448a06e6c1~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_70b8843471fe480f9ba87acafebde8ad~mv2.png" alt="Garrett Mesa" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Mesa</span></a>
-    <a class="logo-tile" href="https://www.garrettturkeycreek.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_f93d4d00d1f740d999d89694006ec6fb~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_5e8a4948da8e4dc6a09d89f5301b2096~mv2.png" alt="Garrett Turkey Creek" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Turkey Creek</span></a>
-    <a class="logo-tile" href="https://www.garrettuptownapts.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_070d7720c8fe4ec5870400cb81c2c19b~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_2f1e67b268484f5f9098ca9aee7a0aeb~mv2.png" alt="Garrett Uptown" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Garrett Uptown</span></a>
-    <a class="logo-tile" href="https://www.jasperatvictoryridge.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_e8d3092a5b7f4a4a9c8fea6056e5d333~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_bb3b6c3f6353415bae25ed6a79fa6767~mv2.png" alt="Jasper at Victory Ridge" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Jasper at Victory Ridge</span></a>
-    <a class="logo-tile" href="https://www.liveatthelennox.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_73fd61f953bb41088dd76fe5ab95aab9~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_48b6bedc94da4b1889ffc2f9f0d4dc16~mv2.png" alt="Lennox at Copperleaf" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Lennox at Copperleaf</span></a>
-    <a class="logo-tile" href="https://www.liftatjordancreek.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_73fd61f953bb41088dd76fe5ab95aab9~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_b833c6de27a746728d8cef0584be846c~mv2.png" alt="Lift at Jordan Creek" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Lift at Jordan Creek</span></a>
-    <a class="logo-tile" href="https://www.liveatmaeva.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_422db80a41bd41d0a9460215726b25e2~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_3fcc7111d5d345f3bc2dbf3d362ad09b~mv2.png" alt="Maeva" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Maeva</span></a>
-    <a class="logo-tile" href="https://www.liveatmaverickapts.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_464d91246e3c4752a52cee09e210fadc~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_351607aa60274adab7feb3817bec86a6~mv2.png" alt="Maverick" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Maverick</span></a>
-    <a class="logo-tile" href="https://www.liveatrewind.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_256e5767b73c40d78320784294fb7dbf~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_c65f85c69473400e85b71051b1df07ea~mv2.png" alt="Rewind at Crest" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Rewind at Crest</span></a>
-    <a class="logo-tile" href="https://www.liveatstonemesa.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_94e6b4c3703a4d94bc37ca3fbe641d9e~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_7e49e8b6fc4e462792526c4dd1db1249~mv2.png" alt="Stone Mesa" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">Stone Mesa</span></a>
-    <a class="logo-tile" href="https://www.liveattheartifact.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_785d898af86e49409930ef2bfdf05a13~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_9394dfadaa4c485ebd4f8d5c69133f1d~mv2.png" alt="The Artifact" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Artifact</span></a>
-    <a class="logo-tile" href="https://www.thebaldwinliving.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_6d932bfd572146a988551c50bb2dd373~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_83676e89086e46bf800bd5d3348f06bb~mv2.png" alt="The Baldwin" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Baldwin</span></a>
-    <a class="logo-tile" href="https://www.thecitizenonconstitution.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_a670cdc5ea1f42efbbbba375227cf97b~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_c555b764cc1c43beb3b70355b8f22894~mv2.png" alt="The Citizen on Constitution" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Citizen on Constitution</span></a>
-    <a class="logo-tile" href="https://www.liveatthegallery.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_1ae0525c17e84a5e99160ba9319ca500~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_54404c075b80449ca9e88fdf189b685e~mv2.png" alt="The Gallery" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Gallery</span></a>
-    <a class="logo-tile" href="https://www.liveatthenash.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_ec0fdec46ce3448dace936f575ecb981~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_f071fb28282c4c25b1384f4a450a8223~mv2.png" alt="The Nash" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Nash</span></a>
-    <a class="logo-tile" href="https://www.pendantapts.com/" target="_blank" rel="noopener" style="--hover-bg: url('https://static.wixstatic.com/media/4f7dd4_6a18a0e1e21348edb722aa252b159cca~mv2.png');"><img src="https://static.wixstatic.com/media/4f7dd4_43bddced91b8465a89e0d7ca8a06ca05~mv2.png" alt="The Pendant Southlands" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none';"><span class="logo-fallback" style="display:block;">The Pendant Southlands</span></a>
   </div>
 </div>
 
