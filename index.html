@@ -282,7 +282,6 @@ body {
 
 /* ═══════════════════════════════════════════════════════════════════
    BUTTON GRID  (Looking for Marketing Materials)
-   — matches Submitting an Expense Report
 ═══════════════════════════════════════════════════════════════════ */
 .links-grid {
   display: grid;
@@ -361,7 +360,6 @@ body {
 
 /* ═══════════════════════════════════════════════════════════════════
    QUICK ACTION CARDS  (Locker Room / Branded Property Names)
-   — matches Tech Issues / Garrett Gear cards, 2-up instead of 3
 ═══════════════════════════════════════════════════════════════════ */
 .quick-grid {
   display: grid;
@@ -454,16 +452,329 @@ body {
 /* Spacing when the quick cards sit directly under the button grid */
 .materials-cards { margin-top: clamp(18px, 2.4vw, 30px); }
 
+/* ═══════════════════════════════════════════════════════════════════
+   WHY BRAND MATTERS  (centered lead + five pillars + closing bar)
+═══════════════════════════════════════════════════════════════════ */
+/* Body copy matches .org-copy / .quick-sub scales used elsewhere */
+.lead-copy {
+  max-width: 720px;
+  margin: 0 auto clamp(30px, 3.4vw, 46px);
+  text-align: center;
+  font-size: clamp(12px, 1.05vw, 14.5px);
+  font-weight: 300;
+  color: #5a6472;
+  line-height: 1.75;
+}
+.lead-copy strong {
+  font-weight: 600;
+  color: var(--blue-dark);
+}
+
+/* ── Five pillars ── */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(12px, 1.6vw, 20px);
+}
+.pillar-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(26px, 2.6vw, 36px) clamp(16px, 1.6vw, 24px) clamp(22px, 2.2vw, 30px);
+  border-radius: 14px;
+  border: 1.5px solid rgba(0,112,185,0.15);
+  background: #f3f2f2;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), 0 1px 4px rgba(0,112,185,0.07);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+/* accent sits along the top edge, since these cards are centered */
+.pillar-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--blue), rgba(0,112,185,0.25));
+}
+.pillar-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0,112,185,0.34);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.10), 0 4px 14px rgba(0,112,185,0.14);
+}
+.pillar-icon {
+  width: clamp(48px, 4.6vw, 62px);
+  height: clamp(48px, 4.6vw, 62px);
+  border-radius: 50%;
+  background: var(--blue-soft);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  transition: background var(--transition), transform var(--transition);
+}
+.pillar-card:hover .pillar-icon { background: var(--blue); transform: scale(1.06); }
+.pillar-icon svg { width: 48%; height: 48%; display: block; }
+.pillar-icon svg path, .pillar-icon svg circle, .pillar-icon svg rect, .pillar-icon svg line { stroke: var(--blue); }
+.pillar-card:hover .pillar-icon svg path,
+.pillar-card:hover .pillar-icon svg circle,
+.pillar-card:hover .pillar-icon svg rect,
+.pillar-card:hover .pillar-icon svg line { stroke: #fff; }
+/* Title scale matches .quick-label / .travel-title used on other pages */
+.pillar-name {
+  font-family: var(--font-head);
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--blue-dark);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.pillar-rule {
+  width: 28px; height: 1.5px;
+  border-radius: 2px;
+  background: var(--blue);
+  opacity: 0.30;
+  margin-bottom: 10px;
+}
+.pillar-desc {
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.55;
+}
+
+/* ── Closing bar — same treatment as the IT help-desk bar ── */
+.brand-banner {
+  position: relative;
+  overflow: hidden;
+  margin-top: clamp(22px, 2.6vw, 34px);
+  padding: clamp(22px, 2.4vw, 34px) clamp(24px, 2.8vw, 44px);
+  border-radius: 18px;
+  text-align: center;
+  background: linear-gradient(135deg, #0b2740 0%, #06182b 100%);
+  box-shadow: 0 14px 38px rgba(0,42,74,0.20);
+}
+.brand-banner::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(80% 140% at 100% 0%, rgba(0,112,185,0.32), transparent 60%);
+  pointer-events: none;
+}
+.brand-banner-eyebrow {
+  position: relative; z-index: 1;
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6ebce9;
+  margin-bottom: 10px;
+}
+.brand-banner-text {
+  position: relative; z-index: 1;
+  font-family: var(--font-head);
+  font-size: clamp(15px, 1.55vw, 20px);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+.brand-banner-text em {
+  font-style: normal;
+  color: #6ebce9;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ELEVATOR PITCH  (script panel + three key-phrase cards)
+═══════════════════════════════════════════════════════════════════ */
+.pitch-panel {
+  position: relative;
+  padding: clamp(28px, 3.2vw, 48px) clamp(24px, 3vw, 52px) clamp(28px, 3vw, 44px);
+  border-radius: 18px;
+  border: 1.5px solid rgba(0,112,185,0.16);
+  background: #f7fafd;
+  box-shadow: 0 8px 30px rgba(0,42,74,0.08), 0 1px 4px rgba(0,112,185,0.08);
+  overflow: hidden;
+}
+.pitch-panel::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--blue), rgba(0,112,185,0.2));
+}
+.pitch-mark {
+  position: absolute;
+  top: clamp(14px, 1.6vw, 22px);
+  right: clamp(18px, 2vw, 34px);
+  font-family: var(--font-head);
+  font-size: clamp(70px, 9vw, 130px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--blue);
+  opacity: 0.09;
+  pointer-events: none;
+  user-select: none;
+}
+/* Kicker matches the .fb-kicker pattern on HR / Training */
+.pitch-kicker {
+  position: relative; z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 18px;
+}
+.pitch-kicker::before {
+  content: '';
+  width: 22px; height: 1.5px;
+  border-radius: 2px;
+  background: var(--blue);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+/* Body copy matches .org-copy exactly */
+.pitch-panel p {
+  position: relative; z-index: 1;
+  font-size: clamp(12px, 1.05vw, 14.5px);
+  font-weight: 300;
+  color: #5a6472;
+  line-height: 1.75;
+  max-width: 110ch;
+}
+.pitch-panel p + p { margin-top: clamp(14px, 1.5vw, 20px); }
+.pitch-panel p strong {
+  font-weight: 600;
+  color: var(--blue-dark);
+}
+/* Opening line carries a little more weight than the rest */
+.pitch-panel p.pitch-open {
+  font-size: clamp(13px, 1.2vw, 16px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* ── Three key-phrase cards ── */
+.pitch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 26px);
+  margin-top: clamp(22px, 2.6vw, 34px);
+  align-items: stretch;          /* all three cards match height */
+}
+.pitch-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 1.5px solid rgba(0,112,185,0.16);
+  background: var(--white);
+  box-shadow: 0 8px 28px rgba(0,42,74,0.08), 0 1px 4px rgba(0,112,185,0.06);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.pitch-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,112,185,0.32);
+  box-shadow: 0 18px 44px rgba(0,42,74,0.12), 0 4px 14px rgba(0,112,185,0.12);
+}
+.pitch-card-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  /* padding matches the card body below so the icon lines up with the text */
+  padding: clamp(18px, 2vw, 24px) clamp(20px, 2.2vw, 28px);
+  background: linear-gradient(150deg, #005c99 0%, #0070b9 55%, #1a8fd4 100%);
+  overflow: hidden;
+}
+.pitch-card:nth-child(2) .pitch-card-head {
+  background: linear-gradient(150deg, #00426f 0%, #005c99 55%, #0070b9 100%);
+}
+.pitch-card:nth-child(3) .pitch-card-head {
+  background: linear-gradient(150deg, #0b2740 0%, #003a63 55%, #00426f 100%);
+}
+.pitch-card-head::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(75% 110% at 85% 0%, rgba(255,255,255,0.18), transparent 62%);
+  pointer-events: none;
+}
+.pitch-card-icon {
+  position: relative; z-index: 1;
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
+  display: flex; align-items: center; justify-content: center;
+}
+.pitch-card-icon svg { width: 54%; height: 54%; display: block; }
+.pitch-card-icon svg path, .pitch-card-icon svg circle, .pitch-card-icon svg rect { stroke: #fff; }
+/* Eyebrow scale matches .org-kicker / .cta-kicker across the playbook */
+.pitch-card-title {
+  position: relative; z-index: 1;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1.3;
+}
+.pitch-card-body {
+  flex: 1;                        /* fills the card so heights stay even */
+  padding: clamp(20px, 2.2vw, 28px) clamp(20px, 2.2vw, 28px) clamp(22px, 2.2vw, 28px);
+}
+.pitch-q {
+  font-size: clamp(12px, 1.05vw, 14px);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--blue-dark);
+  line-height: 1.55;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1.5px solid var(--rule);
+}
+.pitch-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.pitch-list li {
+  position: relative;
+  padding-left: 18px;
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+.pitch-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.45;
+}
+.pitch-list li strong { font-weight: 600; color: var(--blue-dark); }
+
 /* ─── RESPONSIVE ───────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .pillar-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 900px) {
   .cta-grid        { grid-template-columns: 1fr; }
   .team-grid       { grid-template-columns: 1fr; }
   .links-grid      { grid-template-columns: repeat(2, 1fr); }
   .quick-grid,
   .quick-grid.two-up { grid-template-columns: 1fr; }
+  .pitch-grid      { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .pillar-grid     { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 520px) {
   .links-grid      { grid-template-columns: 1fr; }
+  .pillar-grid     { grid-template-columns: 1fr; }
 }
 
 /* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
@@ -805,6 +1116,175 @@ body {
         View Property Names
         <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     WHY BRAND MATTERS
+     ▼ Five pillars — each is one .pillar-card. To add or remove one,
+       copy a card block and update the grid count in the CSS if you
+       go above five. ▼
+════════════════════════════════════════════════════ -->
+<div class="section" id="why-brand">
+  <div class="section-head centered">
+    <h2>
+      Why Brand Matters
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20l1.1-6.5L2.6 8.8l6.5-.9L12 2z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </h2>
+    <p class="section-sub">Our brand is more than a logo — it's the impression we leave every time someone works with us.</p>
+  </div>
+  <div class="divider centered"></div>
+
+  <p class="lead-copy">Our brand <strong>shapes how people perceive us</strong> long before they ever walk a site or sign a contract. It <strong>builds the trust and credibility</strong> that turn first conversations into long partnerships. And in a competitive market where everyone claims quality, a strong, consistent brand is <strong>what makes us stand out</strong> — and stay remembered.</p>
+
+  <div class="pillar-grid">
+
+    <!-- PERCEPTION -->
+    <div class="pillar-card">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" stroke-width="1.7"/></svg>
+      </div>
+      <div class="pillar-name">Perception</div>
+      <div class="pillar-rule"></div>
+      <p class="pillar-desc">How people think and feel about us — often before we've said a word.</p>
+    </div>
+
+    <!-- PROMISE -->
+    <div class="pillar-card">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.3-3.1 7.9-7.5 9-4.4-1.1-7.5-4.7-7.5-9V6L12 3z" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="pillar-name">Promise</div>
+      <div class="pillar-rule"></div>
+      <p class="pillar-desc">What people expect when they choose to work with us.</p>
+    </div>
+
+    <!-- VOICE -->
+    <div class="pillar-card">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 4H4a1.5 1.5 0 0 0-1.5 1.5v9A1.5 1.5 0 0 0 4 16h3v4l4.5-4H20a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 20 4z" stroke-width="1.7" stroke-linejoin="round"/><path d="M7.5 9h9M7.5 12h5.5" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </div>
+      <div class="pillar-name">Voice</div>
+      <div class="pillar-rule"></div>
+      <p class="pillar-desc">How we communicate — the words, tone, and confidence behind them.</p>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="pillar-card">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20.5s-7-4.2-7-9.4A3.9 3.9 0 0 1 12 8.4a3.9 3.9 0 0 1 7 2.7c0 5.2-7 9.4-7 9.4z" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.5 4.2l.8 1.7 1.9.3-1.4 1.3.3 1.9-1.6-.9-1.6.9.3-1.9-1.4-1.3 1.9-.3.8-1.7z" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="pillar-name">Experience</div>
+      <div class="pillar-rule"></div>
+      <p class="pillar-desc">Every interaction with our company, from first call to final walk.</p>
+    </div>
+
+    <!-- CONSISTENCY -->
+    <div class="pillar-card">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.6M20 12a8 8 0 0 1-13.7 5.6" stroke-width="1.7" stroke-linecap="round"/><path d="M17.5 3v3.6H14M6.5 21v-3.6H10" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="pillar-name">Consistency</div>
+      <div class="pillar-rule"></div>
+      <p class="pillar-desc">Showing up the same way everywhere, every single time.</p>
+    </div>
+
+  </div>
+
+  <div class="brand-banner">
+    <span class="brand-banner-eyebrow">Remember</span>
+    <p class="brand-banner-text">Every team member is a <em>brand ambassador</em>.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     THE GARRETT CO. ELEVATOR PITCH
+     ▼ The pitch copy lives in .pitch-panel. The three cards below
+       break out the phrases worth memorizing. ▼
+════════════════════════════════════════════════════ -->
+<div class="section" id="elevator-pitch">
+  <div class="section-head">
+    <h2>
+      The Garrett Co. Elevator Pitch
+      <svg class="head-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 10.5v3A1.5 1.5 0 0 0 4.5 15H7l7 4.5v-15L7 9H4.5A1.5 1.5 0 0 0 3 10.5z" stroke-width="1.6" stroke-linejoin="round"/><path d="M17.5 9.2a4 4 0 0 1 0 5.6M7 15v4.5" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </h2>
+    <p class="section-sub">Who we are in ninety seconds — the story every teammate should be able to tell.</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="pitch-panel">
+    <span class="pitch-mark" aria-hidden="true">&ldquo;</span>
+    <div class="pitch-kicker">The Pitch</div>
+
+    <p class="pitch-open">The Garrett Companies is the <strong>most vertically integrated multifamily developer in America</strong>. For 26 years, we've refined a site-selection strategy that consistently puts us on the best dirt in every market we enter — and we build institutional-quality communities at a cost basis our competitors simply can't touch.</p>
+
+    <p>How? Our construction platform is made up of career multifamily professionals. We leverage national-level subcontractor relationships plus our own internal subbase. When others were paying $1,500 per thousand board feet, we were locked at $350.</p>
+
+    <p>That vertical control — from development through construction to property management — delivers the <strong>highest risk-adjusted returns</strong> for our investors and stakeholders.</p>
+
+    <p>But the real engine is culture. In an industry with 30–40% turnover, we run at 6% — only 3% voluntary. We're a championship team. High accountability, high execution, and a relentless pursuit of excellence. <strong>Tactics win deals. Culture scales companies.</strong> And that's exactly what we're doing.</p>
+  </div>
+
+  <div class="pitch-grid">
+
+    <!-- VERTICALLY INTEGRATED -->
+    <div class="pitch-card">
+      <div class="pitch-card-head">
+        <span class="pitch-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="2.5" width="6" height="5" rx="1.2" stroke-width="1.7"/><rect x="9" y="16.5" width="6" height="5" rx="1.2" stroke-width="1.7"/><path d="M12 7.5v9M5.5 12h13" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </span>
+        <div class="pitch-card-title">Vertically Integrated</div>
+      </div>
+      <div class="pitch-card-body">
+        <p class="pitch-q">What makes us structurally different?</p>
+        <ul class="pitch-list">
+          <li>Control from concept and development through construction and management</li>
+          <li>Delivery with greater <strong>speed, quality, and accountability</strong></li>
+          <li>A lower cost basis competitors can't match</li>
+          <li>Consistency across every market we enter</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CHAMPIONSHIP TEAM -->
+    <div class="pitch-card">
+      <div class="pitch-card-head">
+        <span class="pitch-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0V4z" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 5.5H4.5V7a3 3 0 0 0 2.7 3M17 5.5h2.5V7a3 3 0 0 1-2.7 3" stroke-width="1.7" stroke-linecap="round"/><path d="M12 14v3.5M8.5 20.5h7" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </span>
+        <div class="pitch-card-title">Championship Team</div>
+      </div>
+      <div class="pitch-card-body">
+        <p class="pitch-q">What makes our culture different?</p>
+        <ul class="pitch-list">
+          <li>Aligned, aggressive, and committed to excellence</li>
+          <li>An award-winning culture built on high accountability</li>
+          <li>Investing in our people at every level</li>
+          <li><strong>6% turnover</strong> in an industry that runs 30–40% — only 3% voluntary</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CORE VALUES -->
+    <div class="pitch-card">
+      <div class="pitch-card-head">
+        <span class="pitch-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-width="1.7"/><path d="M15.8 8.2l-2.1 5.5-5.5 2.1 2.1-5.5 5.5-2.1z" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="pitch-card-title">Core Values</div>
+      </div>
+      <div class="pitch-card-body">
+        <p class="pitch-q">What guides how we operate?</p>
+        <ul class="pitch-list">
+          <li>Our <strong>core values drive our decisions</strong> — not the other way around</li>
+          <li>They set the standard for how we treat teammates, partners, and residents</li>
+          <li>Tactics win deals. <strong>Culture scales companies.</strong></li>
+        </ul>
+      </div>
     </div>
 
   </div>
