@@ -502,18 +502,25 @@ body {
   border-color: rgba(0,112,185,0.34);
   box-shadow: 0 16px 40px rgba(0,0,0,0.10), 0 4px 14px rgba(0,112,185,0.14);
 }
+/* NOTE: the icon animates COLOR only. Scaling it on hover re-rasterized
+   the SVG every frame on top of the card's own lift, which read as a
+   jitter/jump — the color fade alone stays smooth. */
 .pillar-icon {
   width: clamp(48px, 4.6vw, 62px);
   height: clamp(48px, 4.6vw, 62px);
+  flex-shrink: 0;
   border-radius: 50%;
   background: var(--blue-soft);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 16px;
-  transition: background var(--transition), transform var(--transition);
+  transition: background var(--transition);
 }
-.pillar-card:hover .pillar-icon { background: var(--blue); transform: scale(1.06); }
+.pillar-card:hover .pillar-icon { background: var(--blue); }
 .pillar-icon svg { width: 48%; height: 48%; display: block; }
-.pillar-icon svg path, .pillar-icon svg circle, .pillar-icon svg rect, .pillar-icon svg line { stroke: var(--blue); }
+.pillar-icon svg path, .pillar-icon svg circle, .pillar-icon svg rect, .pillar-icon svg line {
+  stroke: var(--blue);
+  transition: stroke var(--transition);
+}
 .pillar-card:hover .pillar-icon svg path,
 .pillar-card:hover .pillar-icon svg circle,
 .pillar-card:hover .pillar-icon svg rect,
@@ -614,17 +621,19 @@ body {
   pointer-events: none;
   user-select: none;
 }
-/* Kicker matches the .fb-kicker pattern on HR / Training */
+/* "THE PITCH" — blue with the leading dash, on the Playbook kicker
+   scale (11px / 600 / 0.1em / uppercase) */
 .pitch-kicker {
   position: relative; z-index: 1;
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--blue);
+  line-height: 1.4;
   margin-bottom: 18px;
 }
 .pitch-kicker::before {
@@ -642,7 +651,7 @@ body {
   font-weight: 300;
   color: #5a6472;
   line-height: 1.75;
-  max-width: 110ch;
+  max-width: 92ch;
 }
 .pitch-panel p + p { margin-top: clamp(14px, 1.5vw, 20px); }
 .pitch-panel p strong {
@@ -727,12 +736,15 @@ body {
   flex: 1;                        /* fills the card so heights stay even */
   padding: clamp(20px, 2.2vw, 28px) clamp(20px, 2.2vw, 28px) clamp(22px, 2.2vw, 28px);
 }
+/* Card questions — Playbook "Branded Store" kicker spec
+   (11px / 600 / 0.1em / uppercase / --ink-light) */
 .pitch-q {
-  font-size: clamp(12px, 1.05vw, 14px);
-  font-weight: 500;
-  font-style: italic;
-  color: var(--blue-dark);
-  line-height: 1.55;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  line-height: 1.5;
   padding-bottom: 12px;
   margin-bottom: 14px;
   border-bottom: 1.5px solid var(--rule);
@@ -782,6 +794,7 @@ body {
 .js-reveal .section.in-view { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .js-reveal .section { opacity: 1 !important; transform: none !important; }
+  .pillar-card:hover { transform: none; }
 }
 </style>
 </head>
