@@ -359,7 +359,11 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   QUICK ACTION CARDS  (Locker Room / Branded Property Names)
+   QUICK ACTION CARDS
+   NOTE: The Locker Room / Branded Property Names cards were removed
+   from the markup. These styles are left in place so a quick card can
+   be dropped back into #marketing-materials later without rebuilding
+   the CSS — see the commented placeholder in that section.
 ═══════════════════════════════════════════════════════════════════ */
 .quick-grid {
   display: grid;
@@ -986,8 +990,7 @@ body {
 
 
 <!-- ═══════════════════════════════════════════════════
-     LOOKING FOR MARKETING MATERIALS?
-     (12 buttons + Locker Room / Branded Property Names cards)
+     LOOKING FOR MARKETING MATERIALS?  (12 buttons)
 ════════════════════════════════════════════════════ -->
 <div class="section" id="marketing-materials">
   <div class="section-head">
@@ -1101,37 +1104,10 @@ body {
 
   </div>
 
-<br>
-  <!-- QUICK CARDS — Locker Room / Branded Property Names (directly under the buttons, no divider) -->
-  <div class="quick-grid two-up materials-cards">
+  <!-- ▼ REMOVED: the "Locker Room" and "Branded Property Names" quick cards
+         used to sit here, inside a <div class="quick-grid two-up materials-cards">.
+         The .quick-* styles are still defined above if a card is ever added back. ▼ -->
 
-    <!-- THE LOCKER ROOM -->
-    <div class="quick-card">
-      <div class="quick-icon">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3l4 2 4-2 4 3-3 3v10a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V9L4 6l4-3z" stroke-width="1.8" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="quick-label">The Locker Room</div>
-      <p class="quick-sub">Your team store for branded apparel, gear, and essentials — gear up and represent Garrett.</p>
-      <a class="quick-btn" href="https://garrettcomarketplace.com/" target="_blank" rel="noopener">
-        Shop the Locker Room
-        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-
-    <!-- BRANDED PROPERTY NAMES -->
-    <div class="quick-card">
-      <div class="quick-icon">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0l-7-7A2 2 0 0 1 3 12.2V5a2 2 0 0 1 2-2h7.2a2 2 0 0 1 1.4.6l7 7a2 2 0 0 1 0 2.8z" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="1.5" stroke-width="1.8"/></svg>
-      </div>
-      <div class="quick-label">Branded Property Names</div>
-      <p class="quick-sub">Communities often carry a different name during construction. Reference the official, branded community names here.</p>
-      <a class="quick-btn" href="https://thegarrettco2-my.sharepoint.com/:x:/g/personal/jdunlap_thegarrettco_com/EeFjL1wp_lJHiRIhRdeIjqUBPzTrtXowvcag2aeVu4zaDA?e=50kKuf" target="_blank" rel="noopener">
-        View Property Names
-        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-
-  </div>
 </div>
 
 
@@ -1216,8 +1192,9 @@ body {
 
 <!-- ═══════════════════════════════════════════════════
      THE GARRETT CO. ELEVATOR PITCH
-     ▼ The pitch copy lives in .pitch-panel. The three cards below
-       break out the phrases worth memorizing. ▼
+     ▼ The pitch copy lives in .pitch-panel — one lead paragraph
+       (.pitch-open) followed by a single consolidated paragraph.
+       The three cards below break out the phrases worth memorizing. ▼
 ════════════════════════════════════════════════════ -->
 <div class="section" id="elevator-pitch">
   <div class="section-head">
@@ -1235,11 +1212,7 @@ body {
 
     <p class="pitch-open">The Garrett Companies is the <strong>most vertically integrated multifamily developer in America</strong>. For 26 years, we've refined a site-selection strategy that consistently puts us on the best dirt in every market we enter — and we build institutional-quality communities at a cost basis our competitors simply can't touch.</p>
 
-    <p>How? Our construction platform is made up of career multifamily professionals. We leverage national-level subcontractor relationships plus our own internal subbase. When others were paying $1,500 per thousand board feet, we were locked at $350.</p>
-
-    <p>That vertical control — from development through construction to property management — delivers the <strong>highest risk-adjusted returns</strong> for our investors and stakeholders.</p>
-
-    <p>But the real engine is culture. In an industry with 30–40% turnover, we run at 6% — only 3% voluntary. We're a championship team. High accountability, high execution, and a relentless pursuit of excellence. <strong>Tactics win deals. Culture scales companies.</strong> And that's exactly what we're doing.</p>
+    <p>How? A construction platform built of career multifamily professionals, national-level subcontractor relationships, and our own internal subbase — when others were paying $1,500 per thousand board feet, we were locked at $350. That vertical control, from development through construction to property management, delivers the <strong>highest risk-adjusted returns</strong> for our investors and stakeholders. But the real engine is culture: in an industry with 30–40% turnover, we run at 6% — only 3% voluntary. <strong>Tactics win deals. Culture scales companies.</strong></p>
   </div>
 
   <div class="pitch-grid">
