@@ -100,14 +100,19 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   FEATURE CTA CARDS  (Marketing Request Form / Business Card Orders)
+   FEATURE CTA CARDS
+   (Corporate Marketing Request / Residential Marketing Request /
+    Business Card Orders)
    — matches the Garrett Gazette / Garrett Gear containers
 ═══════════════════════════════════════════════════════════════════ */
 .cta-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(16px, 2vw, 26px);
 }
+/* Add class="two-up" to .cta-grid if this ever drops back to two cards */
+.cta-grid.two-up { grid-template-columns: repeat(2, 1fr); }
+
 .cta-card {
   position: relative;
   overflow: hidden;
@@ -775,10 +780,12 @@ body {
 
 /* ─── RESPONSIVE ───────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
+  .cta-grid    { grid-template-columns: repeat(2, 1fr); }
   .pillar-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 900px) {
-  .cta-grid        { grid-template-columns: 1fr; }
+  .cta-grid,
+  .cta-grid.two-up { grid-template-columns: 1fr; }
   .team-grid       { grid-template-columns: 1fr; }
   .links-grid      { grid-template-columns: repeat(2, 1fr); }
   .quick-grid,
@@ -806,19 +813,35 @@ body {
 <div class="page-wrap">
 
 <!-- ═══════════════════════════════════════════════════
-     TOP CTAs — Marketing Request Form / Business Card Orders
+     TOP CTAs — Corporate Marketing Request Form /
+                Residential Marketing Request Form /
+                Business Card Orders
+     ▼ Drop the real destination into each href="" below ▼
 ════════════════════════════════════════════════════ -->
 <div class="section" id="marketing-cta">
   <div class="cta-grid">
 
-    <!-- MARKETING REQUEST FORM -->
+    <!-- CORPORATE MARKETING REQUEST FORM -->
     <a class="cta-card" href="https://forms.monday.com/forms/576ef37c45893c0855ad8d3549a7ecd8?r=use1" target="_blank" rel="noopener">
       <div class="cta-icon">
         <svg viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke-width="1.7" stroke-linejoin="round"/><rect x="9" y="3" width="6" height="4" rx="1" stroke-width="1.7"/><path d="M8.5 12.5l2 2 4-4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="cta-kicker">Start a Project</div>
-      <div class="cta-title">Marketing Request Form</div>
+      <div class="cta-title">Corporate Marketing Request Form</div>
       <p class="cta-desc">Need a flyer, campaign, signage, or something custom? Submit your request and our marketing team will take it from there.</p>
+      <span class="cta-action">Submit a Request
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+    <!-- RESIDENTIAL MARKETING REQUEST FORM -->
+    <a class="cta-card" href="https://forms.monday.com/forms/3b9d8db68864ebcbccdcbaedb067cd7c?r=use1" target="_blank" rel="noopener">
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 10.5L12 4l8.5 6.5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 9.5V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.5 13.5h5M9.5 16.5h5" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </div>
+      <div class="cta-kicker">Start a Project</div>
+      <div class="cta-title">Residential Marketing Request Form</div>
+      <p class="cta-desc">Requests tied to a community — leasing collateral, property signage, listings, and on-site materials.</p>
       <span class="cta-action">Submit a Request
         <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5.5 2.5L8 5l-2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
